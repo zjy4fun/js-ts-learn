@@ -11,3 +11,4 @@ let proxy = new Proxy(exam, {
 })
 
 console.log(proxy.name)
+console.log(proxy.age)

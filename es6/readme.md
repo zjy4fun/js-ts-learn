@@ -76,7 +76,7 @@ Set中的特殊值：
 undefined 和 undefined是恒等的，所以不重复
 NaN 和 NaN 是不恒等的，但是在 Set 中只能存一个，不重复
 
-# 3.1.3 Reflect 与 Proxy
+# 3.1.2 Reflect 与 Proxy
 
 Proxy 可以对目标对象的读取、函数调用等操作进行拦截，然后进行操作处理。
 它不直接操作对象，而是像代理模式，通过对象的代理对象进行操作，在进行这些操作时，可以添加一些需要的额外操作。
@@ -84,5 +84,8 @@ Reflect可以用于获取目标对象的行为，它与Object类似，但更容�
 
 一个Proxy对象由两部分组成，target, handler
 
-实例方法 get(target, propKey, receiver) 用于target对象上 propKey 的读取操作
+实例方法 get(target, propKey, receiver) 用于 target 对象上 propKey 的读取操作
 
+set(target, propKey, value, receiver) 用于拦截target对象上的propKey的赋值操作
+如果目标对象自身的某个属性，不可写且不可配置，那么set方法将不起作用
+第四个参数receiver表示原始操作行为所在对象，一般是Proxy实例本身
