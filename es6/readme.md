@@ -89,3 +89,12 @@ Reflect可以用于获取目标对象的行为，它与Object类似，但更容�
 set(target, propKey, value, receiver) 用于拦截target对象上的propKey的赋值操作
 如果目标对象自身的某个属性，不可写且不可配置，那么set方法将不起作用
 第四个参数receiver表示原始操作行为所在对象，一般是Proxy实例本身
+apply(target, ctx, args) 用于拦截函数的调用，call 和 reply 操作，target 表示目标对象，ctx 表示目标对象上下文，args 表示目标对象的参数数组
+has(target, propKey) 用于拦截 HasProperty 操作，即在判断 target 对象是否存在 propKey 属性时，会被这个方法拦截。此方法不判断一个属性是对象自身的属性还是继承的属性
+construct(target, args) 用于拦截 new 命令，返回值必须为对象
+defineProperty(target, propKey, propDesc) 用于拦截 Object.definePro 若对象不可扩展，增加目标对象上不存在的属性会报错；
+若对象不可写或不可配置，则不能改变这些属性
+
+erty 操作
+getOwnPropertyDescriptor(target, propKey) 用于拦截 Object.getOwnPropertyD()返回值为属性描述对象或者undefined
+
