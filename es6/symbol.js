@@ -38,6 +38,45 @@ console.log(Object.keys(syObject5))//[]
 console.log(Object.getOwnPropertySymbols(syObject5))    //[ Symbol(key1) ]
 console.log(Reflect.ownKeys(syObject5))                 //[ Symbol(key1) ]
 
+console.log("----------- 使用 Symbol 定义常量 ----------")
+const COLOR_RED = Symbol("red")
+const COLOR_YELLOW = Symbol("yellow")
+const COLOR_BLUE = Symbol("blue")
 
+function ColorException(message) {
+    this.message = message
+    this.name = "ColorException"
+}
 
+function getConstantName(color) {
+    switch (color) {
+        case COLOR_RED:
+            return "COLOR_RED"
+        case COLOR_YELLOW:
+            return "COLOR_YELLOW"
+        case COLOR_BLUE:
+            return "COLOR_BLUE"
+        default:
+            throw new ColorException("Can't find this color")
+    }
+}
 
+try{
+    var color = "green"
+    var colorName = getConstantName(color)
+}catch (e) {
+    var colorName = "unknown"
+    console.log(e.message, e.name)
+}
+
+console.log("------------ Symbol.for() 类似于单例-----------------")
+let yellow = Symbol("Yellow")
+let yellow1 = Symbol.for("Yellow")
+console.log(yellow === yellow1)         //false
+
+let yellow2 = Symbol.for("Yellow")
+console.log(yellow1 === yellow2)        //true
+
+console.log("------------ Symbol.keyFor() 返回一个已登记的Symbol类型值的 key，用来检测该字符串参数作为名称的Symbol值是否已被登记-----------------")
+let yellow3 = Symbol.for("Yellow")
+console.log(Symbol.keyFor(yellow3))    //Yellow
