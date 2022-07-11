@@ -129,4 +129,33 @@ padEnd: 。。。右侧补全
 
 标签模板是一个函数的调用，其中调用的参数是模板字符串，常见的作用是过滤HTML字符串，防止用户输入恶意内容
 
+# 3.2.2 数值
+
+数值的表示
+二进制：0b 或 0B
+八进制：0o 或 0O
+
+常量
+Number.EPSILON属性表示 1 与大于 1 的最小浮点数之间的差
+测试数值是否在误差范围内
+属性特性
+writable: false
+enumerable:false
+configurable: false
+
+最大/最小安全整数
+安全整数：在JavaScript中能够精确表示的整数，安全整数的范围在 2 的 -53 次方到 2 的 53 次方之间，超过这个范围的整数无法精确表示
+最大整数范围：2 的53次方-1
+属性特性
+writable: false
+enumerable:false
+configurable: false
+
+方法
+Number对象新方法
+Number.isFinite()
+
+从全局移植到 Number 对象的方法
+逐步减少全局方法，用于全局变量的模块化，方法的行为没有发生改变
+
 
