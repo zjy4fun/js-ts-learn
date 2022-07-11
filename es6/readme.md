@@ -98,3 +98,35 @@ defineProperty(target, propKey, propDesc) 用于拦截 Object.definePro 若对�
 erty 操作
 getOwnPropertyDescriptor(target, propKey) 用于拦截 Object.getOwnPropertyD()返回值为属性描述对象或者undefined
 
+ptor 操作
+getPrototypeOf(target) 主要用于拦截获取对象原型的操作。
+
+es6 中将 Object 的一些明显属于语言内部的方法移植到了 Reflect 对象上（当前某些方法会同时存在于 Object 和 Reflect 对象上），未来的新方法只部署在 Reflect对象上
+Reflect 对象对某些方法的返回结果进行了修改，使其更合理
+Reflect 对象使用函数的方式实现了 Object 的命令式操作
+
+组合使用
+
+Reflect对象的方法与Proxy对象的方法是一一对应的，所以Proxy对象的方法可以通过调用Reflect对象的方法获取默认行为，然后进行额外操作。
+
+# 3.2.1 字符串
+es6新增子串的识别方法
+- includes
+- startsWith
+- endsWith
+
+以上三个方法都可以接收两个参数，需要搜索的字符串和可选的搜索起始位置索引，不支持正则表达式，indexOf和lastIndexOf这两个方法会将正则表达式转换为字符串并搜索它
+
+repeat():返回新的字符串，表示将字符串重复指定次数返回
+
+字符串补全
+padStart: 返回新的字符串，表示用参数字符串从头部左侧补全原字符串
+padEnd: 。。。右侧补全
+第一个参数是指定生成的字符串的最小长度，第二个参数是用来补全的字符串，如果没有指定第二个参数，默认用空格填充
+
+模板字符串
+使用反引号，变量名卸载${}里面，${}里面也可以写JavaScript表达式
+
+标签模板是一个函数的调用，其中调用的参数是模板字符串，常见的作用是过滤HTML字符串，防止用户输入恶意内容
+
+
