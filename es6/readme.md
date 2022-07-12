@@ -220,6 +220,101 @@ concat()方法由于两个定型数组合并结果不确定, 故不能用于定�
 
 # 4.2 Class类
 
+在 ES6 中, class 作为对象的模板被引入, 可以通过 class 关键字定义类
+
+class 的本质是 function
+
+可以看做是一个语法糖, 让对象原型的写法更加清晰, 更像面向对象编程的语法
+
+类定义不会被提升, 这意味着, 必须在访问前对类进行定义, 否则就会报错
+
+类中方法不需要function关键字
+
+方法间不能加分号
+
+类的主体
+
+属性: prototype 
+
+ES6中, prototype 依然存在, 虽然可以直接类中自定义方法, 但其实方法还是定义在 prototype 上
+
+覆盖方法/初始化时添加方法:
+```js
+Example.prototype={
+
+}
+```
+```js
+Object.assign(Example.prototype, {
+    //methods
+})
+```
+
+静态属性: class本身的属性, 即直接定义在类内部的属性(Class.propname), 不需要实例化, ES6中规定, Class内部只有静态方法,没有静态属性
+```js
+class Example{
+    //新提案
+    static b = 2
+}
+//目前可行写法
+Example.b = 2
+```
+
+公共属性:
+```js
+class Example{}
+Example.prototype.a = 2
+```
+
+实例属性:定义在实例对象(this)上的属性
+```js
+class Example{
+    a = 2
+    constructor(){
+        console.log(this.a)
+    }
+}
+```
+name属性:返回跟在 class 后的类名(存在时)
+```js
+let Example = class Exam {
+    constructor(a) {
+        this.a = a
+    }
+}
+console.log(Example.name)
+```
+
+constructor 方法, 是类的默认方法,创建类的实例化对象时被调用
+
+静态方法: 只有构造函数才能调用
+
+实例方法: 只有实例才能调用
+
+原型方法: 实例和构造函数够可以调用, 是共享的方法
+
+类的实例化
+
+new: class的实例化必须通过 new 关键字
+
+实例化对象:共享原型对象
+
+decorator 是一个函数, 用来修改类的行为, 在代码编译时产生作用
+
+类修饰
+
+第一个参数是 target, 指向类本身
+
+封装和继承
+
+可以通过extends实现类的继承, 子类 constructor 方法中必须由 super,且必须出现在 this 之前
+
+super只能出现在子类的构造方法中
+
+调用父类方法时,super作为对象,在普通方法中,指向父类的原型对象 ,在静态方法中,指向父类
+
+
+
 # 4.3 模块
 
 # 5.1 Promise对象
