@@ -426,8 +426,12 @@ yield* 表达式表示 yield 返回一个遍历器对象, 用于在 Generator �
 
 使用场景:使用Iterator, 为不具备Iterator接口的对象提供遍历方法
 
-
-
-
 # 5.3 async函数
+
+async 是 ES7 才有的与异步操作有关的关键字, 和 Promise, Generator有很大关联
+
+async 函数返回一个 Promise 对象, 可以使用then方法添加回调函数
+
+await 操作符用于等待一个 Promise 对象, 它只能在异步函数 async function 内部使用
+返回的是 Promise 对象的处理结果, 如果等待的不是 Promise 对象, 则返回该值本身
 
