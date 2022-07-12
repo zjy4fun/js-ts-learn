@@ -370,6 +370,36 @@ export {foo, bar}
 
 # 5.1 Promise对象
 
+异步编程的一种解决方案, 从语法上来说, Promise 是一个对象, 从它可以获取异步操作的消息
+
+Promise状态
+
+- pending
+- fulfilled
+- rejected
+
+除了异步操作的结果, 任何其他操作都无法改变这个状态
+
+Promise对象只有: 从pending变为fulfilled和从pending变为rejected的状态改变,只要处于fulfilled和rejected, 状态就不会再变了即resolved
+
+状态的缺点: 
+- 无法取消 Promise, 一旦新建,就会立即执行,无法中途取消
+- 如果不设置回调函数,Promise 内部抛出的错误,无法反映到外层
+- 当处于 pending 状态时, 无法得知目前进展到哪一个阶段(刚刚开始还是即将完成)
+
+then方法
+
+接收两个函数作为参数,第一个参数是 Promise 执行成功时的回调, 第二个参数时 Promise 执行失败时的回调, 两个函数只会有一个被调用
+
+then方法的特点
+
+在 JavaScript 事件队列的当前运行完成之前, 回调函数永远无法被调用
+
+注意的点: 简便的 Promise 链式编程最好保持扁平化, 不要嵌套 Promise, 大多数浏览器中不能终止的Promise链的rejection, 建议后面加上
+```js
+.catch(error => console.log(error))
+```
+
 # 5.2 Generator函数
 
 # 5.3 async函数
