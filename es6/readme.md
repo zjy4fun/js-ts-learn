@@ -402,5 +402,32 @@ then方法的特点
 
 # 5.2 Generator函数
 
+es6 新引入了 Generator 函数, 可以通过 yield 关键字, 把函数的执行流挂起, 为改变执行流程提供了可能, 从而为异步编程提供了解决方案.
+
+Generator有两个区分于普通函数的部分:
+1. function后面有一个星号, 表示函数为 Generator函数
+2. 函数内部有 yield 表达式, 用来定义函数内部的状态
+
+执行机制:
+Generator函数返回一个指向内部状态对象的指针, 所以要调用遍历器对象 Iterator的next方法, 指针就会从函数头部或者上一次停下来的地方开始之执行
+调用next, 执行到yield停下来, 将表达式后面的值作为返回对象的value属性值返回, 如果执行到return, done属性设置为 true, 有return就返回return后的值, 没有return就直接返回undefined
+
+next方法
+
+一般情况下, next方法不传入参数的时候, yield表达式的返回值时undefined, 当 next 传入参数的时候, 该参数会作为上一步 yield 的返回值
+
+除了next,还可以使用for...of循环遍历Generator函数生产的 Iterator 对象
+
+return 方法返回给定值, 并结束遍历Generator函数
+
+throw 方法可以在 Generator 函数体外面抛出异常, 在函数体内捕获异常
+
+yield* 表达式表示 yield 返回一个遍历器对象, 用于在 Generator 函数内部, 调用另一个 Generator 函数
+
+使用场景:使用Iterator, 为不具备Iterator接口的对象提供遍历方法
+
+
+
+
 # 5.3 async函数
 
