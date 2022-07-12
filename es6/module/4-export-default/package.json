@@ -1,0 +1,12 @@
+{
+  "name": "4-export-default",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node import.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

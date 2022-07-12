@@ -1,0 +1,12 @@
+{
+  "name": "module-demo",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1-export.js",
+  "scripts": {
+    "test": "node 1-import.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
